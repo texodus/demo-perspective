@@ -17,20 +17,16 @@ import "@finos/perspective-viewer/dist/css/themes.css";
 
 import "./index.css";
 
-import arrow from "superstore-arrow/superstore.arrow";
+import arrow_url from "superstore-arrow/superstore.arrow";
 
 const worker = perspective.shared_worker();
-
-// superstore.arrow located in node_modules/superstore-arrow/ and it's
-// configured by 'devServer' in 'webpack.config.js'
-// const req = fetch("./superstore.arrow");
 
 window.addEventListener("DOMContentLoaded", async () => {
     const viewer = document.createElement("perspective-viewer");
     document.body.append(viewer);
 
-    // const resp = await req;
-    // const buffer = await resp.arrayBuffer();
+    const req = await fetch(arrow_url);
+    const arrow = await req.arrayBuffer();
     const table = worker.table(arrow);
 
     viewer.load(table);

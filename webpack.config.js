@@ -32,7 +32,7 @@ module.exports = {
             },
             {
                 test: /\.arrow$/,
-                use: [{loader: "arraybuffer-loader"}],
+                use: [{loader: "file-loader"}],
             },
         ],
     },
